@@ -7,7 +7,11 @@ public class MemberServiceImpl implements MemberService{
      * 다형성 만으로는 OCP 원칙을 지킬 수 없음 -> 객체를 생성하고 연관관계를 설정해주는 조립, 설정자가 필요함 -> 스프링 컨테이너
      */
 
-    private final MemberRepository repository = new MemoryMemberRepository();
+    private final MemberRepository repository;
+
+    public MemberServiceImpl(MemberRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void join(Member member) {
